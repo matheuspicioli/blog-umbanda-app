@@ -1,14 +1,29 @@
+import 'package:blog_umbanda/bloc/post-item-bloc.dart';
+import 'package:blog_umbanda/pages/post.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PostItemRecently extends StatelessWidget {
   final double width = 150.0;
   final double height = 220.0;
+  PostItemBloc post;
+
+  PostItemRecently({@required this.post});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: 12.5, top: 25, bottom: 25, right: 12.5),
-      child: Container(
+      child: MaterialButton(
+        padding: EdgeInsets.all(0),
+        onPressed: () {
+          Navigator.push(
+              context,
+              CupertinoPageRoute(
+                builder: (context) => Post(post: post),
+              ));
+        },
+        child: Container(
           width: width,
           height: height,
           decoration: BoxDecoration(
@@ -16,7 +31,9 @@ class PostItemRecently extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             image: DecorationImage(
               image: NetworkImage(
-                'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+                post.imageRecently != null
+                    ? post.imageRecently
+                    : "https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg",
               ),
               fit: BoxFit.cover,
             ),
@@ -32,7 +49,7 @@ class PostItemRecently extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      "Orixás",
+                      post.title,
                       style: TextStyle(
                         fontFamily: "Qing Ke Huang You",
                         fontSize: 25,
@@ -60,7 +77,9 @@ class PostItemRecently extends StatelessWidget {
                 ),
               ),
             ],
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

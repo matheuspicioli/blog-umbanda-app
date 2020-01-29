@@ -1,16 +1,22 @@
+import 'package:blog_umbanda/bloc/post-item-bloc.dart';
+import 'package:blog_umbanda/pages/post.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PostItem extends StatelessWidget {
+  final double widthImage = 50.0;
+  final double heightImage = 50.0;
+  PostItemBloc post;
+
+  PostItem({@required this.post});
+
   @override
   Widget build(BuildContext context) {
-    final double widthImage = 50.0;
-    final double heightImage = 50.0;
-
     return Padding(
       padding: EdgeInsets.only(bottom: 25),
       child: Container(
         width: double.infinity,
-        height: 400,
+        height: 500,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -51,7 +57,7 @@ class PostItem extends StatelessWidget {
                   Icon(
                     Icons.watch_later,
                     color: Theme.of(context).primaryColor,
-                    size: 5,
+                    size: 20,
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 5),
@@ -68,12 +74,24 @@ class PostItem extends StatelessWidget {
               ),
             ),
             Container(
-              child: Image(
-                width: double.infinity,
-                height: 270,
-                fit: BoxFit.fitHeight,
-                image: NetworkImage(
-                  "https://image.freepik.com/fotos-gratis/indian-beautiful-forest-landscapes_1376-210.jpg",
+              child: MaterialButton(
+                padding: EdgeInsets.all(0),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => Post(post: post),
+                      ));
+                },
+                child: Image(
+                  width: double.infinity,
+                  height: 270,
+                  fit: BoxFit.fitHeight,
+                  image: NetworkImage(
+                    post.imagePost != null
+                        ? post.imagePost
+                        : "https://image.freepik.com/fotos-gratis/indian-beautiful-forest-landscapes_1376-210.jpg",
+                  ),
                 ),
               ),
             ),
@@ -87,16 +105,52 @@ class PostItem extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 5),
-                    child: Text("16"),
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(Icons.more_vert),
-                    ],
+                    child: Text(
+                        post.visualizers != null ? "${post.visualizers}" : ""),
                   ),
                 ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 15, top: 15),
+              child: Container(
+                width: double.infinity,
+                // color: Colors.grey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    MaterialButton(
+                      padding: EdgeInsets.all(0),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                              builder: (context) => Post(post: post),
+                            ));
+                      },
+                      child: Text(
+                        post.getText(post.title, 30),
+                        style: TextStyle(
+                          fontFamily: "Qing Ke Huang You",
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ), //TÍTULO
+                    Padding(
+                      padding: EdgeInsets.only(top: 5),
+                      child: Text(
+                        post.getText(post.body, 60),
+                        style: TextStyle(
+                          fontFamily: "Qing Ke Huang You",
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                    ), //CORPO TEXTO
+                  ],
+                ),
               ),
             ),
           ],
