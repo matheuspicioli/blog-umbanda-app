@@ -1,4 +1,4 @@
-import 'package:blog_umbanda/pages/home.dart';
+import 'package:blog_umbanda/pages/home.page.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
