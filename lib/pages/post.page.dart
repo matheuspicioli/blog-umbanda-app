@@ -10,7 +10,7 @@ class Post extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Blog umbanda"),
+        title: Text(post.title),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.more_vert),
