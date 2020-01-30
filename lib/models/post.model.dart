@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 
 class PostModel {
   String title;
-  String body;
+  List<String> contents;
   String author;
   int visualizers;
   String imageSpotlight;
@@ -10,7 +10,7 @@ class PostModel {
 
   PostModel({
     @required this.title,
-    @required this.body,
+    @required this.contents,
     @required this.author,
     this.visualizers,
     this.imageSpotlight,

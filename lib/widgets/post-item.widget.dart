@@ -16,7 +16,7 @@ class PostItem extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 25),
       child: Container(
         width: double.infinity,
-        height: 500,
+        height: 470,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -104,22 +104,22 @@ class PostItem extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 15, top: 15),
-              child: Row(
-                children: <Widget>[
-                  Icon(
-                    Icons.remove_red_eye,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 5),
-                    child: Text(
-                        post.visualizers != null ? "${post.visualizers}" : ""),
-                  ),
-                ],
-              ),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.only(left: 15, top: 15),
+            //   child: Row(
+            //     children: <Widget>[
+            //       Icon(
+            //         Icons.remove_red_eye,
+            //         color: Theme.of(context).primaryColor,
+            //       ),
+            //       Padding(
+            //         padding: EdgeInsets.only(left: 5),
+            //         child: Text(
+            //             post.visualizers != null ? "${post.visualizers}" : ""),
+            //       ),
+            //     ],
+            //   ),
+            // ),
             Padding(
               padding: EdgeInsets.only(left: 15, top: 15),
               child: Container(
@@ -141,8 +141,8 @@ class PostItem extends StatelessWidget {
                       child: Text(
                         post.getText(post.title, 30),
                         style: TextStyle(
-                          fontFamily: "Roboto",
-                          fontSize: 25,
+                          fontFamily: "Qing Ke Huang You",
+                          fontSize: 30,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -150,7 +150,7 @@ class PostItem extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(top: 0),
                       child: Text(
-                        post.getText(post.body, 60),
+                        post.getText(post.contents[0], 60),
                         style: TextStyle(
                           fontFamily: "Roboto",
                           fontSize: 20,
