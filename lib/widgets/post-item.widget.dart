@@ -47,7 +47,10 @@ class PostItem extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(left: 15, right: 15),
                     child: Text(
-                      "Matheus Picioli",
+                      post.author.length >= 15
+                          ? post.author
+                              .replaceRange(15, post.author.length, '.')
+                          : post.author,
                       style: TextStyle(
                         fontFamily: "Roboto",
                         fontSize: 20,

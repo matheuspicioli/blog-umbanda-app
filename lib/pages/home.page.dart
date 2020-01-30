@@ -11,6 +11,7 @@ class HomePage extends StatelessWidget {
         title: "Florestas",
         body:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor semper justo eget luctus. Donec non erat nec nibh tempus aliquam. Proin ac diam eu tortor vulputate facilisis. Etiam at.",
+        author: "Matheus Picioli",
         imagePost:
             "https://image.freepik.com/fotos-gratis/indian-beautiful-forest-landscapes_1376-210.jpg",
         visualizers: 30,
