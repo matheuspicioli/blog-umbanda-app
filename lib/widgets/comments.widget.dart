@@ -1,3 +1,4 @@
+import 'package:blog_umbanda/widgets/dialog-comment.widget.dart';
 import 'package:flutter/material.dart';
 
 class Comments extends StatelessWidget {
@@ -86,7 +87,9 @@ class Comments extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(top: 10),
           child: MaterialButton(
-            onPressed: () {},
+            onPressed: () {
+              dialogTest(context);
+            },
             padding: EdgeInsets.all(0),
             child: Text(
               "COMENTAR",
@@ -98,6 +101,13 @@ class Comments extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  dialogTest(context) {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) => DialogComment(),
     );
   }
 }
