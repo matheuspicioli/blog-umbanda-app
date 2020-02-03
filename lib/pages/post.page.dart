@@ -67,7 +67,9 @@ class Post extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.grey,
               image: DecorationImage(
-                image: NetworkImage(post.imagePost),
+                image: NetworkImage(post.imagePost != null
+                    ? post.imagePost
+                    : 'https://image.freepik.com/fotos-gratis/indian-beautiful-forest-landscapes_1376-210.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
