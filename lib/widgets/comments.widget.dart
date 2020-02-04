@@ -13,24 +13,25 @@ class Comments extends StatefulWidget {
 class _CommentsState extends State<Comments> {
   List<Widget> getCommentsWidget(context) {
     return widget.comments.map((comment) {
+      String author = comment['author'];
+
       return Container(
-        child: Column(
+        child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(top: 20.0),
+              child: Image(
+                width: 50.0,
+                height: 50.0,
+                image: NetworkImage(
+                    'https://cdn.pixabay.com/photo/2016/11/08/15/21/user-1808597_960_720.png'),
+              ),
+            ),
             Padding(
               padding: EdgeInsets.only(top: 20),
               child: Row(
                 children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      Image(
-                        width: 50.0,
-                        height: 50.0,
-                        image: NetworkImage(
-                            'https://cdn.pixabay.com/photo/2016/11/08/15/21/user-1808597_960_720.png'),
-                      ),
-                    ],
-                  ),
                   Padding(
                     padding: EdgeInsets.only(left: 15),
                     child: Container(
@@ -40,7 +41,9 @@ class _CommentsState extends State<Comments> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            comment['author'],
+                            author.length > 15
+                                ? author.replaceRange(15, author.length, '.')
+                                : author,
                             style: TextStyle(
                               fontFamily: 'Roboto',
                               fontSize: 15,
@@ -55,7 +58,7 @@ class _CommentsState extends State<Comments> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(top: 10),
+                            padding: EdgeInsets.only(top: 10.0),
                             child: Text(
                               comment['text'],
                             ),
