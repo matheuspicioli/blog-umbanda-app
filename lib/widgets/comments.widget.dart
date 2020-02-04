@@ -1,13 +1,18 @@
 import 'package:blog_umbanda/widgets/dialog-comment.widget.dart';
 import 'package:flutter/material.dart';
 
-class Comments extends StatelessWidget {
+class Comments extends StatefulWidget {
   List<Map<String, dynamic>> comments;
 
   Comments({@required this.comments});
 
+  @override
+  _CommentsState createState() => _CommentsState();
+}
+
+class _CommentsState extends State<Comments> {
   List<Widget> getCommentsWidget(context) {
-    return comments.map((comment) {
+    return widget.comments.map((comment) {
       return Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,14 +40,14 @@ class Comments extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'Matheus Picioli',
+                            comment['author'],
                             style: TextStyle(
                               fontFamily: 'Roboto',
                               fontSize: 15,
                             ),
                           ),
                           Text(
-                            '09/01/2020 às 14:35',
+                            comment['created_at'],
                             style: TextStyle(
                               fontFamily: 'Roboto',
                               fontSize: 13,
@@ -70,7 +75,7 @@ class Comments extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int quantity = comments.length;
+    int quantity = widget.comments.length;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,7 +112,13 @@ class Comments extends StatelessWidget {
   dialogTest(context) {
     return showDialog(
       context: context,
-      builder: (BuildContext context) => DialogComment(),
+      builder: (BuildContext context) => DialogComment(addComment: addComment),
     );
+  }
+
+  addComment(Map comment) {
+    setState(() {
+      widget.comments.add(comment);
+    });
   }
 }

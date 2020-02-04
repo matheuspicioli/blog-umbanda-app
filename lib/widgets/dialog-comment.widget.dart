@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-class DialogComment extends StatefulWidget {
-  @override
-  _DialogCommentState createState() => _DialogCommentState();
-}
-
-class _DialogCommentState extends State<DialogComment> {
+class DialogComment extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   String _comment;
+  Function addComment;
+
+  DialogComment({this.addComment});
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +19,9 @@ class _DialogCommentState extends State<DialogComment> {
             children: <Widget>[
               TextFormField(
                 decoration: InputDecoration(labelText: 'Comentário: '),
+                keyboardType: TextInputType.multiline,
+                textInputAction: TextInputAction.newline,
+                maxLines: 5,
                 validator: (value) {
                   if (value.isEmpty) {
                     return 'Por favor, insira um comentário';
@@ -50,7 +51,9 @@ class _DialogCommentState extends State<DialogComment> {
                     padding: EdgeInsets.only(top: 20.0),
                     child: FlatButton(
                       padding: EdgeInsets.all(0.0),
-                      onPressed: _submit,
+                      onPressed: () {
+                        _submit(context);
+                      },
                       color: Colors.green,
                       child: Text(
                         'Salvar',
@@ -67,38 +70,19 @@ class _DialogCommentState extends State<DialogComment> {
         ),
       ),
       elevation: 24.0,
-      actions: <Widget>[
-        // FlatButton(
-        //   padding: EdgeInsets.all(0),
-        //   child: Text('Cancelar'),
-        //   onPressed: () {
-        //     Navigator.of(context).pop();
-        //     print("Cancelar");
-        //   },
-        // ),
-        // FlatButton(
-        //   padding: EdgeInsets.all(0),
-        //   child: Text("Enviar"),
-        //   onPressed: () {
-        //     // @TODO not implemented yet
-        //     Navigator.of(context).pop();
-        //     print("Enviado e fechado");
-        //   },
-        // ),
-      ],
+      actions: <Widget>[],
     );
   }
 
-  void _submit() {
+  void _submit(context) {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
+      this.addComment({
+        "author": "Matheus Picioli",
+        "created_at": "09/01/2020 às 10:00",
+        "text": _comment
+      });
+      Navigator.of(context).pop();
     }
   }
-
-  // Widget getFormWidget() {
-  //   return TextFormField(
-  //     decoration:
-  //         InputDecoration(labelText: 'Comentário', hintText: 'Comentário'),
-  //   );
-  // }
 }
