@@ -18,7 +18,12 @@ class DialogComment extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               TextFormField(
-                decoration: InputDecoration(labelText: 'Comentário: '),
+                decoration: InputDecoration(
+                  labelText: 'Comentário:',
+                  // border: UnderlineInputBorder(
+                  //   borderRadius: BorderRadius.all(Radius.circular(5)),
+                  // ),
+                ),
                 keyboardType: TextInputType.multiline,
                 textInputAction: TextInputAction.newline,
                 maxLines: 5,
