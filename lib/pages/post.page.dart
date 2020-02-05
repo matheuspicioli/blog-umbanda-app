@@ -1,26 +1,14 @@
 import 'package:blog_umbanda/models/post.model.dart';
+import 'package:blog_umbanda/services/post.service.dart';
 import 'package:blog_umbanda/widgets/comments.widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 
-class Post extends StatelessWidget {
+class PostPage extends StatelessWidget {
   PostModel post;
 
-  Post({this.post});
-
-  List<Widget> getTextsWidgets() {
-    return post.contents.map((content) {
-      return Padding(
-        padding: EdgeInsets.all(5),
-        child: Text(
-          content,
-          style: TextStyle(
-            fontFamily: "Roboto",
-            fontSize: 15,
-            fontWeight: FontWeight.normal,
-          ),
-        ),
-      );
-    }).toList();
+  PostPage({this.post}) {
+    PostService.pushView(post.id);
   }
 
   @override
@@ -109,7 +97,9 @@ class Post extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.only(left: 5),
                               child: Text(
-                                '${post.visualizers}',
+                                // +1 pq ele estará lendo
+                                // trick para manter app = bd
+                                '${post.views + 1}',
                                 style: TextStyle(color: Colors.white),
                               ),
                             ),
@@ -137,8 +127,9 @@ class Post extends StatelessWidget {
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(top: 30),
-                  child: Column(
-                    children: getTextsWidgets(),
+                  child: Html(
+                    padding: EdgeInsets.all(8.0),
+                    data: post.content,
                   ),
                 ),
                 Padding(
