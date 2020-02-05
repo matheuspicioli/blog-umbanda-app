@@ -42,7 +42,7 @@ class _CommentsState extends State<Comments> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            author.length > 15
+                            author.length >= 15
                                 ? author.replaceRange(15, author.length, '.')
                                 : author,
                             style: TextStyle(

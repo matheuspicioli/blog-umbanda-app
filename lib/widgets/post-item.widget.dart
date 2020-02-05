@@ -47,10 +47,11 @@ class PostItem extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(left: 15, right: 15),
                     child: Text(
-                      post.author.length >= 15
-                          ? post.author
-                              .replaceRange(15, post.author.length, '.')
-                          : post.author,
+                      'Matheus Picioli',
+                      // post.author.length >= 15
+                      //     ? post.author
+                      //         .replaceRange(15, post.author.length, '.')
+                      //     : post.author,
                       style: TextStyle(
                         fontFamily: "Roboto",
                         fontSize: 20,
@@ -59,26 +60,27 @@ class PostItem extends StatelessWidget {
                     ),
                   ),
                   Container(
-                      child: Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.watch_later,
-                        color: Theme.of(context).primaryColor,
-                        size: 20,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 5),
-                        child: Text(
-                          "1 min",
-                          style: TextStyle(
-                            fontFamily: "Qing Ke Huang You",
-                            fontSize: 15,
-                            color: Colors.black,
+                    child: Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.watch_later,
+                          color: Theme.of(context).primaryColor,
+                          size: 20,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 5),
+                          child: Text(
+                            "1 min",
+                            style: TextStyle(
+                              fontFamily: "Qing Ke Huang You",
+                              fontSize: 15,
+                              color: Colors.black,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  )),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -89,7 +91,7 @@ class PostItem extends StatelessWidget {
                   Navigator.push(
                       context,
                       CupertinoPageRoute(
-                        builder: (context) => Post(post: post),
+                        builder: (context) => PostPage(post: post),
                       ));
                 },
                 child: Image(
@@ -104,22 +106,6 @@ class PostItem extends StatelessWidget {
                 ),
               ),
             ),
-            // Padding(
-            //   padding: EdgeInsets.only(left: 15, top: 15),
-            //   child: Row(
-            //     children: <Widget>[
-            //       Icon(
-            //         Icons.remove_red_eye,
-            //         color: Theme.of(context).primaryColor,
-            //       ),
-            //       Padding(
-            //         padding: EdgeInsets.only(left: 5),
-            //         child: Text(
-            //             post.visualizers != null ? "${post.visualizers}" : ""),
-            //       ),
-            //     ],
-            //   ),
-            // ),
             Padding(
               padding: EdgeInsets.only(left: 15, top: 15),
               child: Container(
@@ -135,7 +121,7 @@ class PostItem extends StatelessWidget {
                         Navigator.push(
                             context,
                             CupertinoPageRoute(
-                              builder: (context) => Post(post: post),
+                              builder: (context) => PostPage(post: post),
                             ));
                       },
                       child: Text(
@@ -150,7 +136,7 @@ class PostItem extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(top: 0),
                       child: Text(
-                        post.getText(post.contents[0], 60),
+                        post.contentPreview,
                         style: TextStyle(
                           fontFamily: "Roboto",
                           fontSize: 20,

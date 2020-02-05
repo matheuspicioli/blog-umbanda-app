@@ -20,7 +20,7 @@ class PostItemSpotlight extends StatelessWidget {
           Navigator.push(
               context,
               CupertinoPageRoute(
-                builder: (context) => Post(post: post),
+                builder: (context) => PostPage(post: post),
               ));
         },
         child: Container(
