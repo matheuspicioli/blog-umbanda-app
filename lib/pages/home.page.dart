@@ -12,7 +12,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<PostModel> posts = [];
   List<Widget> widgets = [];
-  bool error = false;
 
   @override
   void initState() {
@@ -26,9 +25,6 @@ class _HomePageState extends State<HomePage> {
       });
     }).catchError((onError) {
       print('DEBUG: Error on fetch posts');
-      setState(() {
-        error = true;
-      });
     });
     super.initState();
   }
@@ -53,13 +49,11 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: EdgeInsets.all(20),
             child: Column(
-              children: widgets.length > 0 && !error
+              children: widgets.length > 0
                   ? widgets
                   : <Widget>[
                       Center(
-                        child: !error
-                            ? CircularProgressIndicator()
-                            : Text('Erro na chamada da API'),
+                        child: CircularProgressIndicator(),
                       ),
                     ],
             ),
