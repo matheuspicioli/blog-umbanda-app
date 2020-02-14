@@ -13,26 +13,7 @@ class PostPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, dynamic>> listOfMap = [
-      {
-        "author": "Maria Gadú",
-        "created_at": "09/01/2020 às 10:00",
-        "text":
-            'Olá Thiengo. Achei o artigo muito bom, mas tem que melhorar o layout do app men KKK'
-      },
-      {
-        "author": "Matheus Picioli",
-        "created_at": "09/01/2020 às 10:00",
-        "text":
-            'Olá Thiengo. Achei o artigo muito bom, mas tem que melhorar o layout do app men KKK'
-      },
-      {
-        "author": "Outra pessoa",
-        "created_at": "09/01/2020 às 10:00",
-        "text":
-            'Olá Thiengo. Achei o artigo muito bom, mas tem que melhorar o layout do app men KKK'
-      },
-    ];
+    List<dynamic> listOfMap = post.comments != null ? post.comments : [];
 
     return Scaffold(
       appBar: AppBar(

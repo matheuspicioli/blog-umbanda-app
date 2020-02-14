@@ -9,29 +9,35 @@ class PostSpotlight extends StatelessWidget {
     final double height = 250.0;
     List<PostModel> posts = [
       new PostModel(
-          id: 1,
-          title: "Xangô",
-          content: "Breve descrição sobre xangô",
-          contentPreview: "Breve descrição sobre xangô",
-          author: "Matheus Picioli",
-          imageSpotlight:
-              "https://static.umbandaeucurto.com/uploads/2017/06/xang%C3%B4.jpg"),
+        id: 1,
+        title: "Xangô",
+        content: "Breve descrição sobre xangô",
+        contentPreview: "Breve descrição sobre xangô",
+        author: "Matheus Picioli",
+        imageSpotlight:
+            "https://static.umbandaeucurto.com/uploads/2017/06/xang%C3%B4.jpg",
+        views: 0,
+      ),
       new PostModel(
-          id: 1,
-          title: "Oxóssi",
-          content: "Breve descrição sobre oxóssi",
-          contentPreview: "Breve descrição sobre oxóssi",
-          author: "Matheus Picioli",
-          imageSpotlight:
-              "https://img.elo7.com.br/product/zoom/1F29224/banner-oxossi-o-cacador-banner-oxossi.jpg"),
+        id: 1,
+        title: "Oxóssi",
+        content: "Breve descrição sobre oxóssi",
+        contentPreview: "Breve descrição sobre oxóssi",
+        author: "Matheus Picioli",
+        imageSpotlight:
+            "https://img.elo7.com.br/product/zoom/1F29224/banner-oxossi-o-cacador-banner-oxossi.jpg",
+        views: 0,
+      ),
       new PostModel(
-          id: 1,
-          title: "Iansã",
-          content: "Breve descrição sobre Yansã",
-          contentPreview: "Breve descrição sobre Yansã",
-          author: "Matheus Picioli",
-          imageSpotlight:
-              "https://www.umbandabrasil.com.br/portal/media/k2/items/cache/60959e8d8c34f5c00b9627dfd768f462_M.jpg"),
+        id: 1,
+        title: "Iansã",
+        content: "Breve descrição sobre Yansã",
+        contentPreview: "Breve descrição sobre Yansã",
+        author: "Matheus Picioli",
+        imageSpotlight:
+            "https://www.umbandabrasil.com.br/portal/media/k2/items/cache/60959e8d8c34f5c00b9627dfd768f462_M.jpg",
+        views: 0,
+      ),
     ];
     List<Widget> widgets = [];
 

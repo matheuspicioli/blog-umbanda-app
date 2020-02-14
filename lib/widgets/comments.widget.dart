@@ -1,8 +1,9 @@
+import 'package:blog_umbanda/models/comment.model.dart';
 import 'package:blog_umbanda/widgets/dialog-comment.widget.dart';
 import 'package:flutter/material.dart';
 
 class Comments extends StatefulWidget {
-  List<Map<String, dynamic>> comments;
+  List<dynamic> comments;
 
   Comments({@required this.comments});
 
@@ -12,8 +13,12 @@ class Comments extends StatefulWidget {
 
 class _CommentsState extends State<Comments> {
   List<Widget> getCommentsWidget(context) {
+    if (widget.comments == null) {
+      return <Widget>[];
+    }
     return widget.comments.map((comment) {
-      String author = comment['author'];
+      // adicionar autor na resposta
+      String author = 'Matheus Picioli';
 
       return Container(
         child: Row(
@@ -51,7 +56,7 @@ class _CommentsState extends State<Comments> {
                             ),
                           ),
                           Text(
-                            comment['created_at'],
+                            comment.createdAt,
                             style: TextStyle(
                               fontFamily: 'Roboto',
                               fontSize: 13,
@@ -61,7 +66,7 @@ class _CommentsState extends State<Comments> {
                           Padding(
                             padding: EdgeInsets.only(top: 10.0),
                             child: Text(
-                              comment['text'],
+                              comment.text,
                             ),
                           ),
                         ],
@@ -79,7 +84,7 @@ class _CommentsState extends State<Comments> {
 
   @override
   Widget build(BuildContext context) {
-    int quantity = widget.comments.length;
+    int quantity = widget.comments != null ? widget.comments.length : 0;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -120,7 +125,8 @@ class _CommentsState extends State<Comments> {
     );
   }
 
-  addComment(Map comment) {
+  addComment(CommentModel comment) {
+    print(comment);
     setState(() {
       widget.comments.add(comment);
     });

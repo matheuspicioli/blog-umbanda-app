@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:blog_umbanda/models/comment.model.dart';
 import 'package:flutter/material.dart';
 
 class DialogComment extends StatelessWidget {
@@ -82,11 +85,11 @@ class DialogComment extends StatelessWidget {
   void _submit(context) {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      this.addComment({
-        "author": "Matheus Picioli",
-        "created_at": "09/01/2020 às 10:00",
-        "text": _comment
-      });
+      this.addComment(new CommentModel(
+        id: Random(555555).nextInt(999999),
+        text: _comment,
+        createdAt: DateTime.now().toString(),
+      ));
       Navigator.of(context).pop();
     }
   }
